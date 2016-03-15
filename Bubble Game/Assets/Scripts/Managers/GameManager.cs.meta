@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 9189f525d6a568748aad7cdff3e1296a
+timeCreated: 1456489026
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - defaultHealth: {fileID: 2800000, guid: 50f4b4f8a5080f74ab2d2fb03e2df248, type: 3}
+  - twoThirdsHealth: {fileID: 2800000, guid: 50f4b4f8a5080f74ab2d2fb03e2df248, type: 3}
+  - oneThirdHealth: {fileID: 2800000, guid: 50f4b4f8a5080f74ab2d2fb03e2df248, type: 3}
+  - emptyHealth: {fileID: 2800000, guid: 50f4b4f8a5080f74ab2d2fb03e2df248, type: 3}
+  - beePrefab: {instanceID: 0}
+  - player: {instanceID: 0}
+  - flock: {instanceID: 0}
+  - obstacleObject: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
