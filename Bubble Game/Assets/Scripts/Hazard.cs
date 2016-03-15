@@ -1,14 +1,12 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class Hazard : Actor {
+public class Hazard : MonoBehaviour {
 
-	bool isHit; 
 
 	// Use this for initialization
 	void Start () {
-	
-		isHit = false; 
+
 	}
 	
 	// Update is called once per frame
@@ -18,13 +16,8 @@ public class Hazard : Actor {
 
 	//when this object collides with another object
 	void OnCollisionEnter(Collision col){
-		
-		isHit = true; 
-		Debug.Log ("isHit: " + isHit); //hits
 
-		if(col.gameObject.name == "Player"){
-
-		    Debug.Log ("A player stepped on me."); //not hit
+		if(col.gameObject.tag == "Player"){
 		}
 
 	} //end of OnCollisionEnter
@@ -32,10 +25,6 @@ public class Hazard : Actor {
 
 	//whent his object stops colliding with another object
 	void OnCollisionExit(Collision col){
-
-		isHit = false; 
-		Debug.Log ("isHit: " + isHit); //hits
-
 	}//end of OnCollisionEnd
 
 }
