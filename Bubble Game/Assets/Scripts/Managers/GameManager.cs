@@ -68,5 +68,14 @@ public class GameManager : Singleton<GameManager>
 		}
 		this.state = state;
 	}
+
+	/// <summary>
+	/// Makes a bubble around the param gameobject
+	/// </summary>
+	/// <param name="actor">Actor.</param>
+	public void BubbleUp(Actor actor)
+	{
+		
+	}
 }
 
