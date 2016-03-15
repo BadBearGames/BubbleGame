@@ -10,9 +10,6 @@ public class Player : MonoBehaviour {
 	//Boolean to prevent multiple jumps
 	public bool canJump;
 
-	//Vector3 to store the player's respawn point
-	public Vector3 spawnPoint; 
-
 	//Rigidbody of Player
 	Rigidbody rb;
 
@@ -29,7 +26,6 @@ public class Player : MonoBehaviour {
 		if(jumpHeight<0){
 			jumpHeight = 1.0f;
 		}
-			
 	}
 	
 	// Update is called once per frame
@@ -54,10 +50,6 @@ public class Player : MonoBehaviour {
 		//If we hit a platform, we can jump again!
 		if(collision.gameObject.tag == "Platform"){
 			canJump = true;
-		//If the Player hits a Hazard
-		}else if(collision.gameObject.tag == "Hazard"){
-			transform.position = spawnPoint; 
-			//Debug.Log("AHHHHHHHHHHHHHHHHHHHH!"); 
 		}
 	}
 }
