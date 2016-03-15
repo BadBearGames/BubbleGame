@@ -13,13 +13,18 @@ public class GameManager : Singleton<GameManager>
 	//Private
 	private GameState state;
 	private float stateTimer;
+	//For bubbles
+	private List<Actor> bubbledActors;
 
 	//Assigned in inspector
 	public Player player;
+	public float bubbleRiseRate;
+	public Material tempBubbleMaterial;
 	#endregion
 
 	#region Properties
 	public GameState State { get { return state; } }
+	public List<Actor> BubbledActors { get { return bubbledActors; } }
 	#endregion
 
 
@@ -27,12 +32,13 @@ public class GameManager : Singleton<GameManager>
 
 	void Awake()
 	{
-		state = GameState.None;
+		Init();
 	}
 
 	public void Init()
 	{
-		
+		state = GameState.None;
+		bubbledActors = new List<Actor>();
 	}
 
 	void Update()
@@ -75,7 +81,16 @@ public class GameManager : Singleton<GameManager>
 	/// <param name="actor">Actor.</param>
 	public void BubbleUp(Actor actor)
 	{
-		
+		actor.IsBubbled = !actor.IsBubbled;
+		if (actor.IsBubbled)
+		{
+			//Add actor to list of bubbled objects
+			bubbledActors.Add(actor);
+		}
+		else
+		{
+			bubbledActors.Remove(actor);
+		}
 	}
 }
 
