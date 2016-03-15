@@ -20,6 +20,7 @@ public class GameManager : Singleton<GameManager>
 	public Player player;
 	public float bubbleRiseRate;
 	public Material tempBubbleMaterial;
+	public Wind currentLevelWind;
 	#endregion
 
 	#region Properties
