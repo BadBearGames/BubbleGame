@@ -25,10 +25,12 @@ public class Tether : MonoBehaviour {
 
         float distance = Vector3.Distance(body.position, tetherPoint.position);
 
-        if (distance > 2) {
+		if (distance > 5) {
             Vector3 force =  tetherPoint.position - body.position;
-            rbody.AddForce(force * GameManager.Instance.bubbleRiseRate);
+			rbody.AddForce(force * GameManager.Instance.bubbleRiseRate);
         }
+
+		Debug.DrawLine(body.position, tetherPoint.position, Color.white);
         
 	}
 }

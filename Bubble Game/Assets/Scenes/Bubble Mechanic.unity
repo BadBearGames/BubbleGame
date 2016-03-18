@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade05abc4f265c34bb9730d521b20e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 975138149}
 --- !u!1 &279201951
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,6 +258,7 @@ MonoBehaviour:
   speed: 0
   jumpHeight: 0
   canJump: 0
+  spawnPoint: {x: 0, y: 0, z: 0}
 --- !u!23 &505327723
 MeshRenderer:
   m_ObjectHideFlags: 0
