@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Platform
   - Hazard
+  - BubbleBlock
   layers:
   - Default
   - TransparentFX

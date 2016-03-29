@@ -21,6 +21,7 @@ public class GameManager : Singleton<GameManager>
 	public float bubbleRiseRate;
 	public Material tempBubbleMaterial;
 	public Wind currentLevelWind;
+	public Camera mainCamera;
 	#endregion
 
 	#region Properties
@@ -59,6 +60,9 @@ public class GameManager : Singleton<GameManager>
 				break;
 			}
 		}
+
+		//Probably stick this under a gamestate in the future
+		CameraFollowPlayer();
 	}
 
 	/// <summary>
@@ -93,5 +97,13 @@ public class GameManager : Singleton<GameManager>
 			bubbledActors.Remove(actor);
 		}
 	}
+
+	/// <summary>
+	/// Makes the camera follow the player
+	/// </summary>
+	public void CameraFollowPlayer(){
+		mainCamera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y+1, mainCamera.transform.position.z);
+	}
+
 }
 

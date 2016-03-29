@@ -836,6 +836,7 @@ MonoBehaviour:
   bubbleRiseRate: 200
   tempBubbleMaterial: {fileID: 2100000, guid: 8d9ae552f348a804ab6256638f363568, type: 2}
   currentLevelWind: {fileID: 553481162}
+  mainCamera: {fileID: 793265274}
 --- !u!1001 &1092714056
 Prefab:
   m_ObjectHideFlags: 0
@@ -878,6 +879,10 @@ Prefab:
     - target: {fileID: 150342, guid: e6e0c433b87a04d49b532c6a1d878522, type: 2}
       propertyPath: m_Name
       value: Bubble Block (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 150342, guid: e6e0c433b87a04d49b532c6a1d878522, type: 2}
+      propertyPath: m_TagString
+      value: BubbleBlock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6e0c433b87a04d49b532c6a1d878522, type: 2}
@@ -1171,6 +1176,10 @@ Prefab:
     - target: {fileID: 150342, guid: e6e0c433b87a04d49b532c6a1d878522, type: 2}
       propertyPath: m_Name
       value: Bubble Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 150342, guid: e6e0c433b87a04d49b532c6a1d878522, type: 2}
+      propertyPath: m_TagString
+      value: BubbleBlock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6e0c433b87a04d49b532c6a1d878522, type: 2}
