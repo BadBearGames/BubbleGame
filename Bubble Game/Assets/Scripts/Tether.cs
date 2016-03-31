@@ -1,19 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent (typeof (Transform))]
-[RequireComponent (typeof (Transform))]
-[RequireComponent (typeof (Rigidbody))]
+[RequireComponent (typeof (GameObject))]
 public class Tether : MonoBehaviour {
 
     
     private float length;
 
     //Assigned in inspector
-    public Transform body;
-    public Rigidbody rbody;
-    public Transform tetherPoint;
-
+    public GameObject bubbleObject;
+    public Rigidbody bubbleRB;
+    public GameObject tetherPoint;
+    public float tetherDistance;
 
 	// Use this for initialization
 	void Start () {
@@ -22,15 +20,23 @@ public class Tether : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        
+        float distance = Vector3.Distance(bubbleObject.transform.position, tetherPoint.transform.position);
 
-        float distance = Vector3.Distance(body.position, tetherPoint.position);
+		if (distance > tetherDistance) {
+            //Gets the Force Direction 
+            Vector3 force =  tetherPoint.transform.position - bubbleObject.transform.position;
+            force = force.normalized;
 
-		if (distance > 5) {
-            Vector3 force =  tetherPoint.position - body.position;
-			rbody.AddForce(force * GameManager.Instance.bubbleRiseRate);
+            //Keeps the object in range of the tether
+            Vector3 getBack = force * (distance - tetherDistance);
+            bubbleObject.transform.Translate(getBack);
+
+            //Neutralizes the Bubble Rise Rate, object needs this to swing
+            bubbleRB.AddForce(force * GameManager.Instance.bubbleRiseRate);
         }
 
-		Debug.DrawLine(body.position, tetherPoint.position, Color.white);
+		Debug.DrawLine(bubbleObject.transform.position, tetherPoint.transform.position, Color.white);
         
 	}
 }
