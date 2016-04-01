@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
+//using UnityEngine.SceneManager;
 
 //manages the button related events
 public class ButtonManager : MonoBehaviour {
 
 	//when the reset/replay button is pressed
 	public void resetLevel(){
-		//Application.LoadLevel(Application.loadedLevelName);//loads the scene with the same name
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		Application.LoadLevel(Application.loadedLevelName);//loads the scene with the same name
+		//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 
 	//loads the Level Select scene when the button is pressed
