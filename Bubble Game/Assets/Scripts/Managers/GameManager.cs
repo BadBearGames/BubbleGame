@@ -22,6 +22,7 @@ public class GameManager : Singleton<GameManager>
 	public Material tempBubbleMaterial;
 	public Wind currentLevelWind;
 	public int bubbleCount;
+	public Camera mainCamera;
 	public int maxBubbleCount;
 	#endregion
 
@@ -63,6 +64,9 @@ public class GameManager : Singleton<GameManager>
 				break;
 			}
 		}
+
+		//Probably stick this under a gamestate in the future
+		CameraFollowPlayer();
 	}
 
 	/// <summary>
@@ -113,5 +117,13 @@ public class GameManager : Singleton<GameManager>
 			}
 		}
 	}
+
+	/// <summary>
+	/// Makes the camera follow the player
+	/// </summary>
+	public void CameraFollowPlayer(){
+		mainCamera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y+1, mainCamera.transform.position.z);
+	}
+
 }
 
