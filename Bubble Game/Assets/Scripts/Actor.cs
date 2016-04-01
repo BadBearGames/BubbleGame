@@ -11,6 +11,7 @@ public class Actor : MonoBehaviour
 
 	//Assigned in inspector
 	public Rigidbody body;
+	public ParticleSystem bubbles;
 	#endregion
 
 	#region Properties
@@ -21,6 +22,10 @@ public class Actor : MonoBehaviour
 	void Start()
 	{
 		defaultMaterial = GetComponent<Renderer>().material;
+		if (bubbles != null)
+		{
+			bubbles.Stop();
+		}
 	}
 
 	void Update()
