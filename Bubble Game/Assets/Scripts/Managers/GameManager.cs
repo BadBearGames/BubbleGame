@@ -21,9 +21,9 @@ public class GameManager : Singleton<GameManager>
 	public float bubbleRiseRate;
 	public Material tempBubbleMaterial;
 	public Wind currentLevelWind;
-	//public int bubbleCount;
+	public int bubbleCount;
 	public Camera mainCamera;
-	//public int maxBubbleCount;
+	public int maxBubbleCount;
 	#endregion
 
 	#region Properties
@@ -44,7 +44,7 @@ public class GameManager : Singleton<GameManager>
 		state = GameState.None;
 		bubbledActors = new List<Actor>();
 
-		//bubbleCount = maxBubbleCount;
+		bubbleCount = maxBubbleCount;
 	}
 
 	void Update()
@@ -90,34 +90,31 @@ public class GameManager : Singleton<GameManager>
 	/// <param name="actor">Actor.</param>
 	public void BubbleUp(Actor actor)
 	{
-		actor.IsBubbled = !actor.IsBubbled;
-
-		if (actor.IsBubbled)
+		if (!actor.IsBubbled)
 		{
-			/*
 			//Add actor to list of bubbled objects
 			if (bubbleCount > 0)
 			{
-				actor.IsBubbled = !actor.IsBubbled;*/
+				actor.IsBubbled = !actor.IsBubbled;
 				bubbledActors.Add(actor);
-				/*bubbleCount--;
+				bubbleCount--;
 
 				if (actor.bubbles != null)
 				{
 					actor.bubbles.Play();
 				}
-			}*/
+			}
 		}
 		else
 		{
-			//actor.IsBubbled = !actor.IsBubbled;
+			actor.IsBubbled = !actor.IsBubbled;
 			bubbledActors.Remove(actor);
-			/*
+
 			if (actor.bubbles != null)
 			{
 				actor.bubbles.Stop();
 				actor.bubbles.Clear();
-			}*/
+			}
 		}
 	}
 
