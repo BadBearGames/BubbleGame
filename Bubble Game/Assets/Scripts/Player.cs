@@ -13,7 +13,7 @@ public class Player : MonoBehaviour {
 	public bool canMoveRight;	//...wall hanging pt2
 
 	//Vector3 to store the player's respawn point
-	public Vector3 spawnPoint; 
+	private Vector3 spawnPoint; 
 
 	//Rigidbody of Player
 	Rigidbody rb;
@@ -34,14 +34,27 @@ public class Player : MonoBehaviour {
 		if(jumpHeight<0){
 			jumpHeight = 1.0f;
 		}
+
+		spawnPoint = transform.position;
 			
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//Debug.Log(canMove);
+		if(transform.position.y<-20){
+			Kill();
+		}
 	}
 
+	//Function to handle player death
+	//Called when player needs to be killed/respawned
+	void Kill(){
+		Debug.Log("Player Died");
+		transform.position = spawnPoint; //changes the player's position to equal the spawn point
+	}
+
+	/** MOVEMENT FUNCTIONS **/
 	//Move Function
 	//Player Moves Left or Right when A/D, Left/Right Arrow, or Joystick is used
 	public void Move(Vector3 movement){
@@ -56,6 +69,7 @@ public class Player : MonoBehaviour {
 		canJump = false;
 	}
 
+	/** COLLISION DETECTION FUNCTIONS **/
 	//Function to handle collision detection
 	//Called when the collision starts
 	void OnCollisionEnter(Collision collision){
@@ -64,12 +78,12 @@ public class Player : MonoBehaviour {
 		//If we hit a platform, we can jump again!
 		//But only if we hit the top of it (ie no wall jumping)
 		if(collision.gameObject.tag == "Platform" || collision.gameObject.tag == "BubbleBlock"){
-			if(collision.contacts[0].normal.y == 1){
+			if(collision.contacts[0].normal.y > .5){
 				canJump = true;
 			}
 		//If the Player hits a Hazard
 		}else if(collision.gameObject.tag == "Hazard"){
-			transform.position = spawnPoint; //changes the player's position to equal the spawn point
+			Kill();
 		}
 	}
 
@@ -83,7 +97,7 @@ public class Player : MonoBehaviour {
 		//Cancel left to right movement
 		foreach(ContactPoint contact in collision.contacts){
 			//Debug.Log(rb.velocity.x+", "+contact.normal.x);
-			if(contact.normal.x < 0){
+			if(contact.normal.x < -.8){
 				canMoveRight = false;
 			} else if(contact.normal.x > 0){
 				canMoveLeft = false;
