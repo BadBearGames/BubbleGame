@@ -40,8 +40,19 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//Debug.Log(canMove);
+		if(transform.position.y<-20){
+			Kill();
+		}
 	}
 
+	//Function to handle player death
+	//Called when player needs to be killed/respawned
+	void Kill(){
+		Debug.Log("Player Died");
+		transform.position = spawnPoint; //changes the player's position to equal the spawn point
+	}
+
+	/** MOVEMENT FUNCTIONS **/
 	//Move Function
 	//Player Moves Left or Right when A/D, Left/Right Arrow, or Joystick is used
 	public void Move(Vector3 movement){
@@ -56,6 +67,7 @@ public class Player : MonoBehaviour {
 		canJump = false;
 	}
 
+	/** COLLISION DETECTION FUNCTIONS **/
 	//Function to handle collision detection
 	//Called when the collision starts
 	void OnCollisionEnter(Collision collision){
@@ -69,7 +81,7 @@ public class Player : MonoBehaviour {
 			}
 		//If the Player hits a Hazard
 		}else if(collision.gameObject.tag == "Hazard"){
-			transform.position = spawnPoint; //changes the player's position to equal the spawn point
+			Kill();
 		}
 	}
 

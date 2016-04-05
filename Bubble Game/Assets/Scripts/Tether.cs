@@ -9,23 +9,25 @@ public class Tether : MonoBehaviour {
 
     //Assigned in inspector
     public GameObject bubbleObject;
-    public Rigidbody bubbleRB;
-    public GameObject tetherPoint;
+	private Rigidbody bubbleRB;
     public float tetherDistance;
 
 	// Use this for initialization
 	void Start () {
-	    
+		bubbleRB = bubbleObject.GetComponent<Rigidbody>();
+		if(!bubbleRB){
+			Debug.Log(name+" does NOT have a RigidBody!");
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
         
-        float distance = Vector3.Distance(bubbleObject.transform.position, tetherPoint.transform.position);
+        float distance = Vector3.Distance(bubbleObject.transform.position, transform.position);
 
 		if (distance > tetherDistance) {
             //Gets the Force Direction 
-            Vector3 force =  tetherPoint.transform.position - bubbleObject.transform.position;
+            Vector3 force =  transform.position - bubbleObject.transform.position;
             force = force.normalized;
 
             //Keeps the object in range of the tether
@@ -36,7 +38,7 @@ public class Tether : MonoBehaviour {
             bubbleRB.AddForce(force * GameManager.Instance.bubbleRiseRate);
         }
 
-		Debug.DrawLine(bubbleObject.transform.position, tetherPoint.transform.position, Color.white);
+		Debug.DrawLine(bubbleObject.transform.position, transform.position, Color.white);
         
 	}
 }
