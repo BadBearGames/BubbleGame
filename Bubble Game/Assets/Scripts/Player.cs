@@ -39,7 +39,11 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//Debug.Log(canMove);
+        //Debug.Log(canMove);
+
+        //Applies friction to movement, will slow the player down 
+        rb.velocity = new Vector3(rb.velocity.x * 0.95f, rb.velocity.y,rb.velocity.z);
+
 	}
 
 	//Move Function

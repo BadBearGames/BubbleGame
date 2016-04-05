@@ -29,6 +29,8 @@ public class GameManager : Singleton<GameManager>
 	#region Properties
 	public GameState State { get { return state; } }
 	public List<Actor> BubbledActors { get { return bubbledActors; } }
+
+    private float cameraFollowDistance;
 	#endregion
 
 
@@ -44,8 +46,10 @@ public class GameManager : Singleton<GameManager>
 		state = GameState.None;
 		bubbledActors = new List<Actor>();
 
-		//bubbleCount = maxBubbleCount;
-	}
+        cameraFollowDistance = 1.0f;
+
+        //bubbleCount = maxBubbleCount;
+    }
 
 	void Update()
 	{
@@ -125,8 +129,16 @@ public class GameManager : Singleton<GameManager>
 	/// Makes the camera follow the player
 	/// </summary>
 	public void CameraFollowPlayer(){
-		mainCamera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y+1, mainCamera.transform.position.z);
-	}
+        
+        mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, player.transform.position.y + 1, mainCamera.transform.position.z);
+
+        if(player.transform.position.x > mainCamera.transform.position.x+ cameraFollowDistance)
+		    mainCamera.transform.position = new Vector3(player.transform.position.x - cameraFollowDistance, player.transform.position.y + 1, mainCamera.transform.position.z);
+
+        if(player.transform.position.x < mainCamera.transform.position.x- cameraFollowDistance)
+            mainCamera.transform.position = new Vector3(player.transform.position.x + cameraFollowDistance, player.transform.position.y + 1, mainCamera.transform.position.z);
+
+    }
 
 }
 
