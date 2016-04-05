@@ -13,7 +13,7 @@ public class Player : MonoBehaviour {
 	public bool canMoveRight;	//...wall hanging pt2
 
 	//Vector3 to store the player's respawn point
-	public Vector3 spawnPoint; 
+	private Vector3 spawnPoint; 
 
 	//Rigidbody of Player
 	Rigidbody rb;
@@ -34,6 +34,8 @@ public class Player : MonoBehaviour {
 		if(jumpHeight<0){
 			jumpHeight = 1.0f;
 		}
+
+		spawnPoint = transform.position;
 			
 	}
 	
@@ -76,7 +78,7 @@ public class Player : MonoBehaviour {
 		//If we hit a platform, we can jump again!
 		//But only if we hit the top of it (ie no wall jumping)
 		if(collision.gameObject.tag == "Platform" || collision.gameObject.tag == "BubbleBlock"){
-			if(collision.contacts[0].normal.y == 1){
+			if(collision.contacts[0].normal.y > .5){
 				canJump = true;
 			}
 		//If the Player hits a Hazard
@@ -95,7 +97,7 @@ public class Player : MonoBehaviour {
 		//Cancel left to right movement
 		foreach(ContactPoint contact in collision.contacts){
 			//Debug.Log(rb.velocity.x+", "+contact.normal.x);
-			if(contact.normal.x < 0){
+			if(contact.normal.x < -.8){
 				canMoveRight = false;
 			} else if(contact.normal.x > 0){
 				canMoveLeft = false;
