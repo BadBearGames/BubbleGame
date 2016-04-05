@@ -41,8 +41,12 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//Debug.Log(canMove);
-		if(transform.position.y<-20){
+        //Debug.Log(canMove);
+
+        //Applies friction to movement, will slow the player down 
+        rb.velocity = new Vector3(rb.velocity.x * 0.95f, rb.velocity.y, rb.velocity.z);
+
+        if (transform.position.y<-20){
 			Kill();
 		}
 	}
