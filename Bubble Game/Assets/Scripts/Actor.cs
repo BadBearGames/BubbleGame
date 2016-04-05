@@ -33,7 +33,7 @@ public class Actor : MonoBehaviour
 		//If bubbled up, add a constant force to the rigidbody
 		if (IsBubbled)
 		{
-			Debug.Log ("Bubbled");
+			//Debug.Log ("Bubbled");
 			body.AddForce(Vector3.up * GameManager.Instance.bubbleRiseRate);
 			body.AddForce(GameManager.Instance.currentLevelWind.windForce);
 
