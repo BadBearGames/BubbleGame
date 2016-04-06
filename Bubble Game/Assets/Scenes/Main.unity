@@ -591,7 +591,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &372780452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -758,7 +758,6 @@ MonoBehaviour:
   canJump: 0
   canMoveLeft: 0
   canMoveRight: 0
-  spawnPoint: {x: -12, y: -1, z: 0}
 --- !u!23 &505327723
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1223,9 +1222,7 @@ MonoBehaviour:
   bubbleRiseRate: 200
   tempBubbleMaterial: {fileID: 2100000, guid: 8d9ae552f348a804ab6256638f363568, type: 2}
   currentLevelWind: {fileID: 553481162}
-  bubbleCount: 3
   mainCamera: {fileID: 793265274}
-  maxBubbleCount: 3
 --- !u!1 &1103034459
 GameObject:
   m_ObjectHideFlags: 0

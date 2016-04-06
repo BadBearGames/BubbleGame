@@ -16,8 +16,6 @@ public class Hazard : MonoBehaviour {
 	//when this object collides with another object
 	void OnCollisionEnter(Collision col){
 
-		if(col.gameObject.tag == "Player"){
-		}
 
 	} //end of OnCollisionEnter
 
