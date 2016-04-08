@@ -3,8 +3,11 @@ using System.Collections;
 
 public class Goal : MonoBehaviour {
 
-	void OnTriggerEnter()
+	void OnTriggerEnter(Collider other)
 	{
-		//do something
+		if (other.gameObject.GetComponent<Player>() != null)
+		{
+			Application.LoadLevel("Level Select");
+		}
 	}
 }
