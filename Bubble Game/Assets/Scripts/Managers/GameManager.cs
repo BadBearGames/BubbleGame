@@ -98,30 +98,22 @@ public class GameManager : Singleton<GameManager>
 
 		if (actor.IsBubbled)
 		{
-			/*
-			//Add actor to list of bubbled objects
-			if (bubbleCount > 0)
-			{
-				actor.IsBubbled = !actor.IsBubbled;*/
-				bubbledActors.Add(actor);
-				/*bubbleCount--;
+			bubbledActors.Add(actor);
 
-				if (actor.bubbles != null)
-				{
-					actor.bubbles.Play();
-				}
-			}*/
+			if (actor.bubbles != null)
+			{
+				actor.bubbles.Play();
+			}
 		}
 		else
 		{
-			//actor.IsBubbled = !actor.IsBubbled;
 			bubbledActors.Remove(actor);
-			/*
+			
 			if (actor.bubbles != null)
 			{
 				actor.bubbles.Stop();
 				actor.bubbles.Clear();
-			}*/
+			}
 		}
 	}
 

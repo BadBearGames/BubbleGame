@@ -36,19 +36,6 @@ public class Actor : MonoBehaviour
 			//Debug.Log ("Bubbled");
 			body.AddForce(Vector3.up * GameManager.Instance.bubbleRiseRate);
 			body.AddForce(GameManager.Instance.currentLevelWind.windForce);
-
-			//Dumb logic we will delete
-			if (GetComponent<Renderer>().material != GameManager.Instance.tempBubbleMaterial)
-			{
-				GetComponent<Renderer>().material = GameManager.Instance.tempBubbleMaterial;
-			}
-		}
-		else
-		{
-			if (GetComponent<Renderer>().material != defaultMaterial)
-			{
-				GetComponent<Renderer>().material = defaultMaterial;
-			}
 		}
 	}
 }
