@@ -44,7 +44,10 @@ public class Player : MonoBehaviour {
         //Debug.Log(canMove);
 
         //Applies friction to movement, will slow the player down 
-        rb.velocity = new Vector3(rb.velocity.x * 0.95f, rb.velocity.y, rb.velocity.z);
+        if (!canJump){
+            rb.velocity = new Vector3(rb.velocity.x * 0.95f, rb.velocity.y, rb.velocity.z);
+        }
+        
 
         if (transform.position.y<-20){
 			Kill();
@@ -84,9 +87,11 @@ public class Player : MonoBehaviour {
 		if(collision.gameObject.tag == "Platform" || collision.gameObject.tag == "BubbleBlock"){
 			if(collision.contacts[0].normal.y > .5){
 				canJump = true;
-			}
-		//If the Player hits a Hazard
-		}else if(collision.gameObject.tag == "Hazard"){
+                transform.parent = collision.transform;//Moves player with the platform
+            }
+
+            //If the Player hits a Hazard
+        }else if(collision.gameObject.tag == "Hazard"){
 			Kill();
 		}
 	}
@@ -94,12 +99,16 @@ public class Player : MonoBehaviour {
 	//Function to handle collision detection
 	//Called when the collision persists
 	void OnCollisionStay(Collision collision){
-		//stop player from hanging on the wall
-
-		//if player is moving right and there is a collision to our right
-		//if player is moving left and there is a collision to our left
-		//Cancel left to right movement
-		foreach(ContactPoint contact in collision.contacts){
+        //If a platform is above you and you jump you never exit and therefore never enter, which disables jumping.
+        if (collision.contacts[0].normal.y > .5){
+            canJump = true; 
+        }
+        
+        //stop player from hanging on the wall
+        //if player is moving right and there is a collision to our right
+        //if player is moving left and there is a collision to our left
+        //Cancel left to right movement
+        foreach (ContactPoint contact in collision.contacts){
 			//Debug.Log(rb.velocity.x+", "+contact.normal.x);
 			if(contact.normal.x < -.8){
 				canMoveRight = false;
