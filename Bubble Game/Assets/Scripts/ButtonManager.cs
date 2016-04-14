@@ -30,4 +30,14 @@ public class ButtonManager : MonoBehaviour {
 	public void mainMenuSelect(){
 		Application.LoadLevel("Title Screen");
 	}
+
+	//when a pop-up button is pressed
+	public void  openWindow(GameObject window){
+		window.SetActive(true);
+	}
+
+	//closes the pop-up window
+	public void closeWindow(GameObject window){
+		window.SetActive(false);
+	}
 }
