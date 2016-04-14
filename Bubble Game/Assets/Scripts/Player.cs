@@ -58,6 +58,7 @@ public class Player : MonoBehaviour {
 	//Called when player needs to be killed/respawned
 	void Kill(){
 		Debug.Log("Player Died");
+		SoundManager.Instance.PlayEffect("bad");
 		transform.position = spawnPoint; //changes the player's position to equal the spawn point
 	}
 
@@ -74,6 +75,7 @@ public class Player : MonoBehaviour {
 	public void Jump(){
 		rb.velocity = new Vector3 (rb.velocity.x, jumpHeight, rb.velocity.z);
 		canJump = false;
+		SoundManager.Instance.PlayEffect("jump");
 	}
 
 	/** COLLISION DETECTION FUNCTIONS **/

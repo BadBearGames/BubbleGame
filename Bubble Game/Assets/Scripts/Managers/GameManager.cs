@@ -95,6 +95,7 @@ public class GameManager : Singleton<GameManager>
 	public void BubbleUp(Actor actor)
 	{
 		actor.IsBubbled = !actor.IsBubbled;
+		SoundManager.Instance.PlayEffect("pop");
 
 		if (actor.IsBubbled)
 		{
