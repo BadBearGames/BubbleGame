@@ -21,21 +21,18 @@ public class InputManager : Singleton<InputManager>
 			ProcessClick();
 		}
 
-		/** PLAYER MOVEMENT **/
-		Player player = gameManager.player;
-
 		//Move left to right
 		//Movement is done with WASD/Arrow Keys/Joystick
-		if(Input.GetAxis("Horizontal")>0 && player.canMoveRight){
-			player.Move(Vector3.right);
-		} else if(Input.GetAxis("Horizontal")<0 && player.canMoveLeft){
-			player.Move(Vector3.left);
+		if(Input.GetAxis("Horizontal")>0 && GameManager.Instance.player.canMoveRight){
+			GameManager.Instance.player.Move(Vector3.right);
+		} else if(Input.GetAxis("Horizontal")<0 && GameManager.Instance.player.canMoveLeft){
+			GameManager.Instance.player.Move(Vector3.left);
 		}
 	
 		//Jump
 		//Jump by hitting space, W, or the up arrow
-		if(player.canJump && (Input.GetKeyDown("space") || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))){
-			player.Jump();
+		if(GameManager.Instance.player.canJump && (Input.GetKeyDown("space") || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))){
+			GameManager.Instance.player.Jump();
 		}
 	}
 

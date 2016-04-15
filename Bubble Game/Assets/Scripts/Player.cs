@@ -18,6 +18,11 @@ public class Player : MonoBehaviour {
 	//Rigidbody of Player
 	Rigidbody rb;
 
+	void Awake()
+	{
+		GameManager.Instance.player = this;
+	}
+
 	// Use this for initialization
 	void Start () {
 		canMoveLeft = true;

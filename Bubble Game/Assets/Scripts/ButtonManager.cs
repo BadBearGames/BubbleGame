@@ -22,8 +22,10 @@ public class ButtonManager : MonoBehaviour {
 	}
 
 	//Loads a level, corresponding to the passed int value
-	public void levelSelect(int level){
+	public void levelSelect(int level)
+	{
 		Application.LoadLevel("Level"+level);
+		GameManager.Instance.Init();
 	}
 
 	//loads the Main Menu/Title Screen

@@ -21,8 +21,6 @@ public class GameManager : Singleton<GameManager>
 	public float bubbleRiseRate;
 	public Material tempBubbleMaterial;
 	public Wind currentLevelWind;
-	//public int bubbleCount;
-	public Camera mainCamera;
 	//public int maxBubbleCount;
 	#endregion
 
@@ -38,6 +36,7 @@ public class GameManager : Singleton<GameManager>
 
 	void Awake()
 	{
+		DontDestroyOnLoad(this);
 		Init();
 	}
 
@@ -48,7 +47,12 @@ public class GameManager : Singleton<GameManager>
 
         cameraFollowDistance = 1.0f;
 
-        //bubbleCount = maxBubbleCount;
+		/*GameObject playerGO = GameObject.Find("Player");
+		if (playerGO != null)
+		{
+			player = playerGO.GetComponent<Player>();
+			currentLevelWind = GameObject.Find("Wind").GetComponent<Wind>();
+		}*/
     }
 
 	void Update()
@@ -70,7 +74,10 @@ public class GameManager : Singleton<GameManager>
 		}
 
 		//Probably stick this under a gamestate in the future
-		CameraFollowPlayer();
+		if (player != null)
+		{
+			CameraFollowPlayer();
+		}
 	}
 
 	/// <summary>
@@ -123,13 +130,13 @@ public class GameManager : Singleton<GameManager>
 	/// </summary>
 	public void CameraFollowPlayer(){
         
-        mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, player.transform.position.y + 1, mainCamera.transform.position.z);
+		Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, player.transform.position.y + 1, Camera.main.transform.position.z);
 
-        if(player.transform.position.x > mainCamera.transform.position.x+ cameraFollowDistance)
-		    mainCamera.transform.position = new Vector3(player.transform.position.x - cameraFollowDistance, player.transform.position.y + 1, mainCamera.transform.position.z);
+		if(player.transform.position.x > Camera.main.transform.position.x+ cameraFollowDistance)
+			Camera.main.transform.position = new Vector3(player.transform.position.x - cameraFollowDistance, player.transform.position.y + 1, Camera.main.transform.position.z);
 
-        if(player.transform.position.x < mainCamera.transform.position.x- cameraFollowDistance)
-            mainCamera.transform.position = new Vector3(player.transform.position.x + cameraFollowDistance, player.transform.position.y + 1, mainCamera.transform.position.z);
+		if(player.transform.position.x < Camera.main.transform.position.x- cameraFollowDistance)
+			Camera.main.transform.position = new Vector3(player.transform.position.x + cameraFollowDistance, player.transform.position.y + 1, Camera.main.transform.position.z);
 
     }
 

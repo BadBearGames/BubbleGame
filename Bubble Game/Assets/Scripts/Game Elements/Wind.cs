@@ -9,6 +9,11 @@ public class Wind : MonoBehaviour
 	public Vector3 windForce; //Set this in inspector, this will affect the rigidbodies
 	#endregion
 
+	void Awake()
+	{
+		GameManager.Instance.currentLevelWind = this;
+	}
+
 	void Start()
 	{
 		//Set windzones rotation and force to the wind force

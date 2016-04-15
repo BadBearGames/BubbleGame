@@ -35,7 +35,8 @@ public class Actor : MonoBehaviour
 		{
 			//Debug.Log ("Bubbled");
 			body.AddForce(Vector3.up * GameManager.Instance.bubbleRiseRate);
-			body.AddForce(GameManager.Instance.currentLevelWind.windForce);
+			if (GameManager.Instance.currentLevelWind != null)
+				body.AddForce(GameManager.Instance.currentLevelWind.windForce);
 		}
 	}
 }

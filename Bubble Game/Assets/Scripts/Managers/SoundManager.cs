@@ -12,6 +12,11 @@ public class SoundManager : Singleton<SoundManager>
 
 	protected SoundManager() {}
 
+	void Awake()
+	{
+		DontDestroyOnLoad(this);
+	}
+
 	void Start()
 	{
 		//Find source
@@ -20,9 +25,11 @@ public class SoundManager : Singleton<SoundManager>
 
 		//init sound
 		musicClip = Resources.Load("Sound/music") as AudioClip;
-		musicSource.PlayOneShot(musicClip);
+		musicSource.clip = musicClip;
 		musicSource.loop = true;
 		musicSource.volume = 0.7f;
+		musicSource.Play();
+
 			
 		//init clips
 		effectClips = new Dictionary<string, AudioClip>();
